@@ -1,0 +1,31 @@
+{
+  "name": "Environment Tagger",
+  "description": "Never delete those production data again!",
+  "version": "0.9.0.1",
+
+  "permissions": [
+    "activeTab",
+    "storage",
+    "tabs",
+    "http://*/",
+    "https://*/"
+  ],
+ 
+  "options_page": "options.html",
+
+  "browser_action": {
+    "default_icon": "128.png",
+    "default_title": "Environment Tagger"
+  },
+
+"icons": { 
+  "128": "128.png" 
+},
+
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "manifest_version": 2
+}

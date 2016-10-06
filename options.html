@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Environment Tagger Options</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <script src="angular.min.js"></script>
+  <script src="optionscontroller.js"></script>
+</head>
+
+<body ng-app="optionsApp" ng-controller="optionsCtrl">
+
+  <h1>Environment Tagger Options</h1>
+
+
+  <button type="button" ng-click="addEmptyRow()" style="margin-right:10px;" class="btn btn-primary btn-sm active pull-right">Add new rule</button>
+
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Url regex</th>
+        <th>Marker html</th>
+        <th>CSS</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="item in data.rules track by $index">
+        <td><input class="form-control" type="text" ng-model="item.pattern" ng-blur="save()"></td>
+        <td><textarea class="form-control" ng-model="item.html" ng-blur="save()"></textarea></td>
+        <td><textarea class="form-control"  ng-model="item.css" ng-blur="save()"></textarea></td>
+        <td><button type="button" class="btn btn-danger btn-sm" ng-click="removeRule(item)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>
