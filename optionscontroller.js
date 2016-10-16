@@ -67,7 +67,8 @@ var defaultHtml = '<div class="ribbon" id="mark"><span id="ribbonText">DEV</span
 
 var defaultCss = `.ribbon {
   position: absolute;
-  right: -5px; top: -5px;
+  right: 0; 
+  top: 0;
   z-index: 1;
   overflow: hidden;
   width: 200px; height: 200px;
@@ -76,6 +77,7 @@ var defaultCss = `.ribbon {
   pointer-events: none;
 }
 .ribbon span {
+    font-family: arial;
     font-size: 20px;
     font-weight: bold;
     color: #FFF;
@@ -92,24 +94,6 @@ var defaultCss = `.ribbon {
     position: absolute;
     top: 59px;
     right: -49px;
-}
-.ribbon span::before {
-  content: "";
-  position: absolute; left: 0px; top: 100%;
-  z-index: -1;
-  border-left: 3px solid #79A70A;
-  border-right: 3px solid transparent;
-  border-bottom: 3px solid transparent;
-  border-top: 3px solid #79A70A;
-}
-.ribbon span::after {
-  content: "";
-  position: absolute; right: 0px; top: 100%;
-  z-index: -1;
-  border-left: 3px solid transparent;
-  border-right: 3px solid #79A70A;
-  border-bottom: 3px solid transparent;
-  border-top: 3px solid #79A70A;
 }
 
 `;
