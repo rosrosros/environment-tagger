@@ -21,16 +21,18 @@
     <thead>
       <tr>
         <th>Url regex</th>
-        <th>Marker html</th>
-        <th>CSS</th>
+        <th>Text</th>
+        <th>Color</th>
+        <th>Position</th>
         <th></th>
       </tr>
       </thead>
       <tbody>
       <tr ng-repeat="item in data.rules track by $index">
         <td><input class="form-control" type="text" ng-model="item.pattern" ng-blur="save()"></td>
-        <td><textarea class="form-control" ng-model="item.html" ng-blur="save()"></textarea></td>
-        <td><textarea class="form-control"  ng-model="item.css" ng-blur="save()"></textarea></td>
+        <td><input class="form-control" type="text" ng-model="item.text" ng-blur="save()"></td>
+        <td><input class="form-control" type="text" ng-model="item.color" ng-blur="save()"></td>
+        <td><input class="form-control" type="text" ng-model="item.position" ng-blur="save()"></td>
         <td><button type="button" class="btn btn-danger btn-sm" ng-click="removeRule(item)">Delete</button></td>
       </tr>
     </tbody>

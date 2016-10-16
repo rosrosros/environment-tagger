@@ -5,14 +5,7 @@ app.controller('optionsCtrl', ['$scope','$timeout', function($scope,$timeout) {
 
     var loadOptions = function(callback){
 		chrome.storage.sync.get(
-			{rules: [
-					{
-					  pattern: "google",
-					  css: defaultCss,
-					  html: defaultHtml
-					}
-
-			]}
+			{rules: []}
 		, function(items) {
 		    	callback(items);
 		  });
@@ -41,11 +34,11 @@ app.controller('optionsCtrl', ['$scope','$timeout', function($scope,$timeout) {
     $scope.addEmptyRow = function(){
     	$scope.data.rules.unshift(
     		{
-    			pattern:"new",
-    			html: defaultHtml,
-    			css: defaultCss
-
-    		}
+            pattern: "new",
+            text: 'label',
+            position: 'topleft',
+            color: 'green'
+          }
     	);
     	saveOptions($scope.data);
 
@@ -60,40 +53,3 @@ app.controller('optionsCtrl', ['$scope','$timeout', function($scope,$timeout) {
     
 
 }]);
-
-
-
-var defaultHtml = '<div class="ribbon" id="mark"><span id="ribbonText">DEV</span></div>';
-
-var defaultCss = `.ribbon {
-  position: absolute;
-  right: 0; 
-  top: 0;
-  z-index: 1;
-  overflow: hidden;
-  width: 200px; height: 200px;
-  text-align: right;
-  z-index:100000;
-  pointer-events: none;
-}
-.ribbon span {
-    font-family: arial;
-    font-size: 20px;
-    font-weight: bold;
-    color: #FFF;
-    text-transform: uppercase;
-    text-align: center;
-    line-height: 36px;
-    transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    width: 250px;
-    display: block;
-    background: #79A70A;
-    background: linear-gradient(#9BC90D 0%, #79A70A 100%);
-    box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
-    position: absolute;
-    top: 59px;
-    right: -49px;
-}
-
-`;

@@ -10,13 +10,37 @@ var loadOptions = function(callback) {
     });
 };
 
+
+var buildHtml = function(setting){
+  //console.log(setting)
+  var defaultHtml = '<div class="ribbon ##class##" id="mark"><span id="ribbonText">##text##</span></div>';
+  var positionCss = parsePostion(setting);
+  var colorCss = parseColor(setting);
+
+  var html = defaultHtml
+      .replace(new RegExp('##text##'),setting.text)
+      .replace(new RegExp('##class##'),positionCss + ' ' + colorCss);
+    return html;
+}
+
+function parsePostion(setting){
+  if(setting.position == 'topleft')
+    return 'ribbon-top-left';
+
+  return 'ribbon-top-right';
+}
+
+function parseColor(setting){
+  if(setting.color == 'green')
+    return 'ribbon-color-green';
+
+  return 'ribbon-color-blue';
+}
+
 function ensureRibbon() {
 
   
   loadOptions(function(settings) {
-
-   // console.log('loaded options', settings);
-
 
     chrome.tabs.query({
       currentWindow: true,
@@ -32,10 +56,9 @@ function ensureRibbon() {
       settings.rules.forEach(function(setting) {
 
         if (new RegExp(setting.pattern).test(url)) {
-        //  console.log("Matched url: ", url);
         
           chrome.tabs.insertCSS({
-            code: setting.css
+            code: defaultCss
           });
 
           chrome.tabs.executeScript({
@@ -44,7 +67,7 @@ function ensureRibbon() {
             if(!elementExists){
               var div = document.createElement("div");
               div.id="environment_tagger"; 
-              div.innerHTML = '` + setting.html + `'  
+              div.innerHTML = '` + buildHtml(setting) + `';
               document.body.appendChild(div); 
             }
           `,
@@ -84,3 +107,67 @@ function startRequest() {
   window.setTimeout(startRequest, pollInterval);
 }
 startRequest();
+
+
+
+var defaultCss = `.ribbon {
+  position: absolute;
+
+  z-index: 1;
+  overflow: hidden;
+  width: 200px; height: 200px;
+  text-align: right;
+  z-index:100000;
+  pointer-events: none;
+}
+.ribbon span {
+    font-family: arial;
+    font-size: 20px;
+    font-weight: bold;
+    color: #FFF;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 36px;
+    
+    width: 250px;
+    display: block;
+    background: #79A70A;
+    background: linear-gradient(#9BC90D 0%, #79A70A 100%);
+    box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+    position: absolute;
+    top: 59px;
+    
+}
+
+.ribbon-top-left{
+    left: 0; 
+    top: 0;
+}
+
+.ribbon-top-left span{
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  left: -49px;
+}
+
+.ribbon-top-right{
+    right: 0; 
+    top: 0;
+}
+
+.ribbon-top-right span{
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  right: -49px;
+}
+
+.ribbon-color-green span {
+
+}
+
+.ribbon-color-blue span{
+  background: #1e5799;
+  background: linear-gradient(#2989d8 0%, #1e5799 100%);
+}
+
+`;
