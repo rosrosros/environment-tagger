@@ -34,8 +34,8 @@ app.controller('optionsCtrl', ['$scope','$timeout', function($scope,$timeout) {
     $scope.addEmptyRow = function(){
     	$scope.data.rules.unshift(
     		{
-            pattern: "new",
-            text: 'label',
+            pattern: "google.com",
+            text: 'this is google',
             position: 'topleft',
             color: 'green'
           }

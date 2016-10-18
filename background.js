@@ -56,11 +56,7 @@ function ensureRibbon() {
       settings.rules.forEach(function(setting) {
 
         if (new RegExp(setting.pattern).test(url)) {
-        
-          chrome.tabs.insertCSS({
-            code: defaultCss
-          });
-
+  
           chrome.tabs.executeScript({
             code: `
             var elementExists = document.getElementById("environment_tagger");
@@ -69,6 +65,12 @@ function ensureRibbon() {
               div.id="environment_tagger"; 
               div.innerHTML = '` + buildHtml(setting) + `';
               document.body.appendChild(div); 
+
+              var style = document.createElement('style');
+              style.id = "environment_tagger_style";
+              style.type = 'text/css';
+              style.appendChild(document.createTextNode(\`` + defaultCss + `\`));
+              document.head.appendChild(style);
             }
           `,
             runAt: 'document_start'
@@ -112,8 +114,6 @@ startRequest();
 
 var defaultCss = `.ribbon {
   position: absolute;
-
-  z-index: 1;
   overflow: hidden;
   width: 200px; height: 200px;
   text-align: right;
