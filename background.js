@@ -24,14 +24,14 @@ var buildHtml = function(setting){
 }
 
 function parsePostion(setting){
-  if(setting.position == 'topleft')
+  if(setting.position == 'Top Left')
     return 'ribbon-top-left';
 
   return 'ribbon-top-right';
 }
 
 function parseColor(setting){
-  if(setting.color == 'green')
+  if(setting.color == 'Green')
     return 'ribbon-color-green';
 
   return 'ribbon-color-blue';

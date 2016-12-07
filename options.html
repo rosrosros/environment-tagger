@@ -21,7 +21,7 @@
     <thead>
       <tr>
         <th>Url regex</th>
-        <th>Text</th>
+        <th>Ribbon text</th>
         <th>Color</th>
         <th>Position</th>
         <th></th>
@@ -31,8 +31,8 @@
       <tr ng-repeat="item in data.rules track by $index">
         <td><input class="form-control" type="text" ng-model="item.pattern" ng-blur="save()"></td>
         <td><input class="form-control" type="text" ng-model="item.text" ng-blur="save()"></td>
-        <td><input class="form-control" type="text" ng-model="item.color" ng-blur="save()"></td>
-        <td><input class="form-control" type="text" ng-model="item.position" ng-blur="save()"></td>
+        <td><select class="form-control" ng-model="item.color" ng-options="x for x in colors" ng-change="save()"></select></td>
+        <td><select class="form-control" ng-model="item.position" ng-options="x for x in positions" ng-change="save()"></select></td>
         <td><button type="button" class="btn btn-danger btn-sm" ng-click="removeRule(item)">Delete</button></td>
       </tr>
     </tbody>

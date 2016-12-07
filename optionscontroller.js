@@ -19,6 +19,9 @@ app.controller('optionsCtrl', ['$scope','$timeout', function($scope,$timeout) {
 
 	};
 
+    $scope.positions = ["Top Left", "Top Right"];
+    $scope.colors = ["Green", "Blue"];
+
     loadOptions(function(data){
 
     	$scope.data = data;
@@ -36,8 +39,8 @@ app.controller('optionsCtrl', ['$scope','$timeout', function($scope,$timeout) {
     		{
             pattern: "google.com",
             text: 'this is google',
-            position: 'topleft',
-            color: 'green'
+            position: 'Top Left',
+            color: 'Green'
           }
     	);
     	saveOptions($scope.data);
