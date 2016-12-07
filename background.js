@@ -13,7 +13,7 @@ var loadOptions = function(callback) {
 
 var buildHtml = function(setting){
   //console.log(setting)
-  var defaultHtml = '<div class="ribbon ##class##" id="mark"><span id="ribbonText">##text##</span></div>';
+  var defaultHtml = '<div class="ribbon-base ##class##" id="mark"><span>##text##</span></div>';
   var positionCss = parsePostion(setting);
   var colorCss = parseColor(setting);
 
@@ -112,7 +112,7 @@ startRequest();
 
 
 
-var defaultCss = `.ribbon {
+var defaultCss = `.ribbon-base {
   position: absolute;
   overflow: hidden;
   width: 200px; height: 200px;
@@ -120,7 +120,7 @@ var defaultCss = `.ribbon {
   z-index:100000;
   pointer-events: none;
 }
-.ribbon span {
+.ribbon-base span {
     font-family: arial;
     font-size: 20px;
     font-weight: bold;
@@ -136,6 +136,7 @@ var defaultCss = `.ribbon {
     box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
     position: absolute;
     top: 59px;
+    opacity: 0.9;
     
 }
 
