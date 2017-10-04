@@ -34,6 +34,18 @@ function parseColor(setting){
   if(setting.color == 'Green')
     return 'ribbon-color-green';
 
+  if(setting.color == 'Red')
+    return 'ribbon-color-red';
+
+  if(setting.color == 'Grey')
+    return 'ribbon-color-grey';
+
+  if(setting.color == 'Turkis')
+    return 'ribbon-color-turkis';
+
+  if(setting.color == 'Brown')
+    return 'ribbon-color-brown';
+
   return 'ribbon-color-blue';
 }
 
@@ -174,5 +186,26 @@ var defaultCss = `.ribbon-base {
   background: #1e5799;
   background: linear-gradient(#2989d8 0%, #1e5799 100%);
 }
+
+.ribbon-color-red span{
+  background: #F70505;
+  background: linear-gradient(#F70505 0%, #8F0808 100%);
+}
+
+.ribbon-color-grey span{
+  background: #B6BAC9;
+  background: linear-gradient(#B6BAC9 0%, #808080 100%);
+}
+
+.ribbon-color-turkis span{
+  background: #1e5799;
+  background: linear-gradient(#05EFF7 0%, #087F8F 100%);
+}
+
+.ribbon-color-brown span{
+  background: #1e5799;
+  background: linear-gradient(#F79E05 0%, #8F5408 100%);
+}
+
 
 `;

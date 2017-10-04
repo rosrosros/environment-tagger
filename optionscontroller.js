@@ -20,7 +20,7 @@ app.controller('optionsCtrl', ['$scope','$timeout', function($scope,$timeout) {
 	};
 
     $scope.positions = ["Top Left", "Top Right"];
-    $scope.colors = ["Green", "Blue"];
+    $scope.colors = ["Green", "Blue", "Red", "Grey", "Turkis", "Brown"];
 
     loadOptions(function(data){
 
