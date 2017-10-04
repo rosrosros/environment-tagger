@@ -100,6 +100,10 @@ chrome.tabs.query({
   ensureRibbon();
 });
 
+// open options page when icon extension icon is clicked
+chrome.browserAction.onClicked.addListener(function() {chrome.runtime.openOptionsPage()});
+
+
 
 //var pollInterval = 1000 * 60; // 1 minute
 var pollInterval = 2000; //2 sec

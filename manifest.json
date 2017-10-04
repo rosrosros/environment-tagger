@@ -11,7 +11,11 @@
     "https://*/"
   ],
  
-  "options_page": "options.html",
+  "options_ui": {
+    "page": "options.html",
+    "chrome_style": false,
+    "open_in_tab": true
+  },
   "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
   
   "browser_action": {
